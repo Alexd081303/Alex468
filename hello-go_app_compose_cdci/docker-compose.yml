@@ -3,9 +3,9 @@ services:
     build:
       context: ./docker/
       tags:
-        - "linhbngo/go_server:latest"
+        - "Alexd081303/go_server:latest"
     container_name: go_app
-    image: linhbngo/go_server:latest
+    image: Alexd081303/go_server:latest
     restart: always
     expose:
       - 8080
