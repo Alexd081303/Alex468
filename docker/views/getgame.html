@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Video Game Info — Alexander Dimichele</a>
+  </nav>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <p>
+          <div class="caption">Action games are fast-paced and require quick reflexes. Titles like Dark Souls are known for their punishing difficulty.</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/640px-Placeholder_view_vector.svg.png" alt="Action Game" style="width:100%">
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          <div class="caption">RPGs like The Witcher 3 offer rich storytelling and deep character progression systems.</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/640px-Placeholder_view_vector.svg.png" alt="RPG Game" style="width:100%">
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          <div class="caption">Your Games</div>
+          <ul class="list-unstyled">
+            <% games.forEach(function(game) { %>
+              <p><strong>Name:</strong> <%= game.name %></p>
+              <p><strong>Genre:</strong> <%= game.genre %></p>
+              <hr>
+            <% }); %>
+          </ul>
+          <a href="/games" class="btn btn-dark btn-sm">Add Another</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
