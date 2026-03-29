@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Game Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Video Game Info — Alexander Dimichele</a>
+  </nav>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <p>
+          <div class="caption">Action games are fast-paced and require quick reflexes. Titles like Dark Souls are known for their punishing difficulty.</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/640px-Placeholder_view_vector.svg.png" alt="Action Game" style="width:100%">
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          <div class="caption">RPGs like The Witcher 3 offer rich storytelling and deep character progression systems.</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/640px-Placeholder_view_vector.svg.png" alt="RPG Game" style="width:100%">
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          <form action="/games/addgame" method="post">
+            <div class="caption">Enter Your Game — Alexander Dimichele</div>
+            <input type="text" placeholder="Game Name" name="name" class="form-control mb-2">
+            <input type="text" placeholder="Genre (e.g. RPG, FPS, Strategy)" name="genre" class="form-control mb-2">
+            <button type="submit" class="btn btn-dark btn-block">Submit</button>
+          </form>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
