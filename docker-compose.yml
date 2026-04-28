@@ -4,14 +4,20 @@ services:
   app:
     build: ./docker
     ports:
-      - "3000:3000"
+      - "8080:8080"
     depends_on:
       - mongo
+    environment:
+      - MONGO_HOSTNAME=mongo
+      - MONGO_PORT=27017
+      - MONGO_DB=sharkinfo
+    restart: on-failure
 
   mongo:
     image: mongo:6
     volumes:
       - mongo-data:/data/db
+    restart: always
 
 volumes:
   mongo-data:
