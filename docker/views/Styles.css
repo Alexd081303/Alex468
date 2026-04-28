@@ -1,0 +1,32 @@
+
+Copy
+
+body {
+  background-color: #f8f9fa;
+}
+ 
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+ 
+.caption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #343a40;
+}
+ 
+img {
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+ 
+.container {
+  max-width: 960px;
+}
+ 
+hr {
+  border-top: 1px solid #dee2e6;
+}
+ 
