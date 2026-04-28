@@ -20,7 +20,7 @@ exports.create = function (req, res) {
 exports.list = function (req, res) {
   Game.find({}).exec(function (err, games) {
     if (err) {
-      return res.send(500, err);
+      return res.status(500).send(err);
     }
     res.render('getgame', { games: games });
   });
