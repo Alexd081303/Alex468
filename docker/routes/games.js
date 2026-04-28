@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const game = require('../controllers/sharks');
+const game = require('../controllers/games');
 
 router.get('/', function (req, res) {
   game.index(req, res);
