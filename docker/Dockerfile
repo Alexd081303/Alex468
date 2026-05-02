@@ -1,13 +1,17 @@
+FROM node:alpine
 
-FROM golang:1.21-alpine AS builder
- 
-WORKDIR /app
-COPY main.go .
-RUN go build -o server main.go
- 
-FROM alpine:latest
-WORKDIR /app
-COPY --from=builder /app/server .
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY --chown=node:node . .
+
+USER node
+
 EXPOSE 8080
-CMD ["./server"]
- 
+
+CMD ["node", "app.js"]
