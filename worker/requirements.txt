@@ -1,1 +1,1 @@
-echo "requests==2.31.0" > ~/Alex468/worker/requirements.txt
+requests==2.31.0
