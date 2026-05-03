@@ -23,4 +23,3 @@ app.get('/health', (req, res) => {
 app.listen(port, function () {
   console.log('Game app listening on port ' + port + '!');
 });
-EOF
