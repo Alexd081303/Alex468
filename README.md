@@ -29,20 +29,22 @@ A fully containerized, multi-service web application where users can submit thei
 ---
 
 ## 1. System Architecture
-                    ┌──────────────────────────────────┐
-                    │         Docker Bridge Network     │
-                    │           app-network             │
-                    │                                   │
-Browser ──── :8080 ──►│  app (Node.js/Express)            │
-│       │           │               │
-curl    ──── :5000 ──►│  api (Flask)      │               │
-│       │           │               │
-│  worker (Python)──┘               │
-│       │                           │
-│  mongo (MongoDB 6) ◄──────────────┘
-│       │
-│  [mongo-data volume]
-└──────────────────────────────────┘
+```
+                        ┌──────────────────────────────────┐
+                        │         Docker Bridge Network     │
+                        │           app-network             │
+                        │                                   │
+  Browser ──── :8080 ──►│  app (Node.js/Express)            │
+                        │       │           │               │
+  curl    ──── :5000 ──►│  api (Flask)      │               │
+                        │       │           │               │
+                        │  worker (Python)──┘               │
+                        │       │                           │
+                        │  mongo (MongoDB 6) ◄──────────────┘
+                        │       │
+                        │  [mongo-data volume]
+                        └──────────────────────────────────┘
+```
 
 The system consists of four services:
 
@@ -57,6 +59,7 @@ The system consists of four services:
 ---
 
 ## 2. Folder Structure
+```
 csc466-docker-mongo/
 ├── docker-compose.yml
 ├── profile_docker.py
@@ -87,9 +90,10 @@ csc466-docker-mongo/
 │   ├── requirements.txt
 │   └── app.py
 └── worker/
-├── Dockerfile
-├── requirements.txt
-└── worker.py
+    ├── Dockerfile
+    ├── requirements.txt
+    └── worker.py
+```
 
 ---
 
