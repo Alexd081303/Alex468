@@ -6,7 +6,7 @@ Alex468
 
 <img width="900" height="400" alt="project_vision_diagram" src="https://github.com/user-attachments/assets/911df427-5ee2-4938-9e48-87ead86019cb" />
 
-#CSC 466 — Docker + MongoDB Video Game App
+# CSC 466 — Docker + MongoDB Video Game App
 
 A fully containerized, multi-service web application where users can submit their favorite video games and genres. Data is stored in MongoDB and displayed back in the browser. A Python Flask REST API and a background worker service round out a three-tier architecture deployed on CloudLab.
 Developed by Alexander Dimichele
