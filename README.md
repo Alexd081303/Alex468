@@ -39,13 +39,14 @@ Learning Outcomes
                         │       │
                         │  [mongo-data volume]
                         └──────────────────────────────────┘
+   
 The system consists of four services:
 app — A Node.js/Express web server that renders HTML views using EJS. It accepts game submissions from the browser, writes them to MongoDB, and displays the full game list. Exposed on port 8080.
 api — A Python Flask REST API that reads game data from MongoDB and exposes it as JSON. It provides a /api/games endpoint for the full game list and /api/games/stats for genre breakdowns. Exposed on port 5000.
 worker — A Python background service that polls the API every 30 seconds and logs game statistics to stdout. It demonstrates persistent inter-service communication over the internal network without any exposed ports.
 mongo — The official MongoDB 6 image used as a shared data store. Its data is persisted to a named Docker volume (mongo-data) so game entries survive container restarts. Its port is intentionally not published to the host.
 
-2. Folder Structure
+3. Folder Structure
 csc466-docker-mongo/
 ├── docker-compose.yml            # Defines all four services and the bridge network
 ├── profile_docker.py             # CloudLab RSpec profile — provisions and auto-deploys
@@ -80,11 +81,11 @@ csc466-docker-mongo/
     ├── requirements.txt
     └── worker.py
 
-3. Container Design & Base Images
+4. Container Design & Base Images
 ServiceBase ImageReasonappnode:alpineMinimal Node.js image (~50 MB vs 350 MB+ for Debian). No system-level dependencies needed beyond Node and npm.apipython:3.11-slimSlim Debian variant gives access to pip and the full Python standard library while keeping image size down.workerpython:3.11-slimSame reasoning as the API — lightweight and compatible with the requests library.mongomongo:6Official image; version 6 is a stable long-term release with strong Mongoose compatibility. No custom Dockerfile needed.
 Alpine Linux is chosen for the Node.js service because it produces significantly smaller images. Smaller images pull faster on CloudLab, use less disk, and have a smaller attack surface. The Python services use python:3.11-slim rather than Alpine because some pip packages require C build tooling that is awkward to install on Alpine, and slim already provides a good size/compatibility tradeoff.
 
-4. Dockerfile Walkthrough
+5. Dockerfile Walkthrough
 Node.js App (docker/Dockerfile)
 dockerfileFROM node:alpine
 Pulls the official Node.js image on Alpine Linux — minimal footprint, fast build.
@@ -109,7 +110,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 The same layer-caching strategy applies: copying requirements.txt first means pip dependencies are only reinstalled when that file changes, not on every source code edit. --no-cache-dir avoids storing the pip download cache inside the image, keeping the final layer smaller.
 
-5. Networking
+6. Networking
 Bridge Network
 Docker Compose automatically creates a named bridge network (app-network) for all services. A bridge network is a private internal network on the host — containers on it can reach each other directly using service names as hostnames, while remaining isolated from the public internet unless ports are explicitly published.
 DNS Resolution
